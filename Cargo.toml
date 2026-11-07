@@ -1,0 +1,31 @@
+[package]
+name = "veil-browser"
+version = "0.1.0"
+edition = "2021"
+description = "VEIL Browser CLI — a fast command-line browser for AI agents. Compact accessibility-tree output over CDP, no screenshots by default."
+license = "MIT"
+repository = "https://github.com/veil-os/veil-browser-cli"
+authors = ["VEIL OS"]
+
+[[bin]]
+name = "veil-browser"
+path = "src/main.rs"
+
+[lib]
+name = "veil_browser"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1"
+base64 = "0.22"
+clap = { version = "4", features = ["derive", "env"] }
+futures-util = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = { version = "0.26", features = ["native-tls"] }
+tungstenite = { version = "0.26", features = ["native-tls"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
